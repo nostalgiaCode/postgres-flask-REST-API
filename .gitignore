@@ -1,8 +1,8 @@
-__pycache__\
-env\
-models\__pycache__\
-resources\__pycache__\
-smth\
-tests\
-uploads\
-utils\__pycache__\
+__pycache__/
+env/
+models/__pycache__/
+resources/__pycache__/
+smth/
+tests/
+uploads/
+utils/__pycache__/
