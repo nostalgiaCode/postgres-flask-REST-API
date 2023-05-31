@@ -16,7 +16,7 @@ class UploadFile(Resource):
         if file and allowed_file(file.filename):
             data = json.loads(request.form.to_dict()['json'])
             try:
-                user=UserModel.get_user(data['id_user'], data['token'])
+                user=UserModel.get_user(id=data['id_user'], uuid=data['token'])
                 record_name = get_random_name()
                 file.save(os.path.join(UPLOAD_FOLDER, record_name + ".wav"))
                 if(user.record_id != None):

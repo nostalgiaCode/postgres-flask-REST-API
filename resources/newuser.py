@@ -11,11 +11,11 @@ class User(Resource):
         name = request_data['username']
 
         user=UserModel(username=name)
-        if(UserModel.query.filter_by(username=name).first() == None):
+        if(UserModel.get_user(name) == None):
             db.session.add(user)
             db.session.commit()
         else:
-            user=UserModel.query.filter_by(username=name).first()
+            user=UserModel.get_user(name)
         data = {
             "id" : user.id,
             "token" : user.uuid,

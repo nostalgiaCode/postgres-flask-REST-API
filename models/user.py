@@ -16,6 +16,11 @@ class UserModel(db.Model):
         self.uuid = str(uuid.uuid4())
         self.username = username
 
-    def get_user(given_id, given_uuid):
-        return UserModel.query.filter_by(id=given_id, uuid=given_uuid).first()
+    def get_user(id=None, uuid=None, record_id=None, username=None):
+        if id is not None and uuid is not None and record_id is None and username is None:
+            return UserModel.query.filter_by(id=id, uuid=uuid).first()
+        elif id is not None and record_id is not None and uuid is None and username is None:
+            return UserModel.query.filter_by(id=id, record_id=record_id).first()
+        elif username is not None and id is None and record_id is None and uuid is None:
+            return UserModel.query.filter_by(username=username).first()
     

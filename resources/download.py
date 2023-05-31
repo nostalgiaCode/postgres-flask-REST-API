@@ -8,7 +8,7 @@ class RecordFile(Resource):
     def get(self): 
         id_record = request.args.get('id')
         user = request.args.get('user')
-        if(UserModel.get_user(id=user, record_id=id_record)!=None):
+        if(UserModel.get_user(id=user, record_id=id_record)):
             try:
                 return send_from_directory(directory=UPLOAD_FOLDER,
                                path=id_record+".mp3", as_attachment=True)
