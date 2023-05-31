@@ -1,0 +1,28 @@
+volumes:
+  questions-vol:
+
+services:
+
+  pgsql:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_USER: postgres
+      #POSTGRES_DB: questions
+      POSTGRES_DB: postgres
+    volumes:
+      - questions-vol:/var/lib/postgresql/data #не уверен, что это корректный волюм
+    ports:
+      - 5432:5432
+
+  python:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    depends_on:
+      - pgsql
+    ports:
+      - 80:5000
+
+      #Прописать волюм для питона
