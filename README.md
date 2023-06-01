@@ -1,6 +1,6 @@
 # postgres-flask-REST-API
 
-Использовались postgres, sqlalchemy, flask, docker.
+Использовались postgres, sqlalchemy, flask, docker-compose.
 
 #### Установка
 Для установки сервиса на Windows 10 убедитесь, что у вас установлен и запущен Docker Desktop (устанавливается только на Windows 10 Enterprise, Pro, or Education издания), скачайте docker-compose.yml файл и перенесите его в отдельную папку. В терминале перейдите в папку, содержащую docker-compose.yml файл и введите команду docker compose up. Docker сам скачает все необходимые образы с Docker Hub'а и запустит сервис.
