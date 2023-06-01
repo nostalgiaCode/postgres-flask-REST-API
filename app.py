@@ -3,7 +3,7 @@ import os
 from flask import Flask
 from flask_restful import Api
 
-from config import UPLOAD_FOLDER, postgresqldocker
+from config import UPLOAD_FOLDER, postgresqldocker, postgresqllocal
 
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
