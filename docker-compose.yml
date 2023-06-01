@@ -1,5 +1,6 @@
 volumes:
   users-vol:
+  uploads-vol:
 
 services:
 
@@ -21,5 +22,7 @@ services:
       dockerfile: ./Dockerfile
     depends_on:
       - pgsql
+    volumes:
+      - uploads-vol:/app/uploads
     ports:
       - 80:5000
