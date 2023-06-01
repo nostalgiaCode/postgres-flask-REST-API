@@ -3,15 +3,14 @@ import os
 from flask import Flask
 from flask_restful import Api
 
-from config import UPLOAD_FOLDER
+from config import UPLOAD_FOLDER, postgresqldocker
 
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
 app = Flask(__name__)
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1234@localhost:5432/'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1234@pgsql:5432/'
+app.config['SQLALCHEMY_DATABASE_URI'] = postgresqldocker
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 api = Api(app)
