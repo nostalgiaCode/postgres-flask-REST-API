@@ -1,13 +1,18 @@
-from flask import request, send_from_directory
+from flask import request, send_from_directory, jsonify
 from flask_restful import Resource
 
 from config import UPLOAD_FOLDER
 from models.user import UserModel
 
-class RecordFile(Resource):
+class Downloader(Resource):
     def get(self): 
-        id_record = request.args.get('id')
-        user = request.args.get('user')
+        try:
+            id_record = request.args.get('id')
+            print(id_record)
+            user = request.args.get('user')
+            print(user)
+        except:
+            return {'message' : 'Invalid input'}, 400
         if(UserModel.get_user(id=user, record_id=id_record)):
             try:
                 return send_from_directory(directory=UPLOAD_FOLDER,
@@ -15,4 +20,4 @@ class RecordFile(Resource):
             except:
                 {'message' : 'Record not found'}, 404
         else:
-            return {'message' : 'Wrong user_id or record_id'}, 401
+            return {'message' : 'Wrong user_id or record_id'}, 400

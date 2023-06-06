@@ -17,7 +17,7 @@ services:
       - 5432:5432
 
   python:
-    image: nostalgiacode/test:0.1.0.RELEASE
+    image: nostalgiacode/flask2:0.8
     depends_on:
       - pgsql
     volumes:
